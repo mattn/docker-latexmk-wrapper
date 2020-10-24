@@ -23,7 +23,7 @@ func main() {
 
 	cmdname := "docker"
 	if runtime.GOOS == "windows" {
-		cmdname = `C:\Program Files\Docker\Docker\resources\docker.exe`
+		cmdname = `%PROGRAMFILES%\Docker\Docker\resources\docker.exe`
 	}
 
 	cmd := exec.Command(
@@ -42,7 +42,7 @@ func main() {
 
 	if runtime.GOOS == "windows" {
 		path := strings.Join([]string{
-			`C:\Program Files\Docker\Docker\resources\bin`,
+			`%PROGRAMFILES%\Docker\Docker\resources\bin`,
 			os.Getenv("PATH"),
 		}, string(os.PathListSeparator))
 		cmd.Env = append(os.Environ(), fmt.Sprintf("PATH=%s", path))
